@@ -2,6 +2,7 @@ package application.view;
 
 import application.MainApp;
 import application.model.Person;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,7 +17,7 @@ public class DataSetterController {
     private MainApp mainApp;
     private TableOverviewController tableOverviewController;
     private ObservableList<Person> currentData;
-    private ObservableList<Person> selectedData;
+    private ObservableList<Person> selectedData = FXCollections.observableArrayList();;
     private int selectedDataSize = 0;
     private int startIndex = 0;
     private int endIndex = 0;
@@ -28,10 +29,10 @@ public class DataSetterController {
     public void setCurrentData(ObservableList<Person> currentData){
         this.currentData = currentData;
         if (selectedDataSize > currentData.size()) selectedDataSize = currentData.size();
+        if (endIndex > currentData.size() + 1) endIndex = currentData.size() + 1;                       // ???? +1
 
         if (selectedDataSize == 0){
             selectedDataSize = currentData.size();
-            endIndex = currentData.size();
             showFirstPage();
         } else selectData();
 
@@ -111,9 +112,8 @@ public class DataSetterController {
 
             alert.showAndWait();
         } else {
-            if (selectedDataSize > currentData.size()){
-                selectedDataSize = currentData.size();
-            }
+            if (selectedDataSize > currentData.size()) selectedDataSize = currentData.size();
+            if (endIndex > currentData.size() + 1) endIndex = currentData.size() + 1;
             selectData();
         }
     }

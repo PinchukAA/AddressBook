@@ -1,6 +1,5 @@
 package application.view;
 
-import application.MainApp;
 import application.model.Person;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,12 +27,7 @@ public class TableOverviewController {
     @FXML
     private TableColumn<Person, Integer> flatNumberColumn;
 
-    private MainApp mainApp;
     private ObservableList<Person> tableData;
-
-    TableOverviewController(){
-
-    }
 
     @FXML
     private void initialize() {
@@ -54,10 +48,6 @@ public class TableOverviewController {
 
     public void setTableItems(){
        tableView.setItems(tableData);
-    }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
     }
 
     public void removeTableItems(){

@@ -42,8 +42,6 @@ public class DataSaver {
         } else {
             return null;
         }
-
-
     }
 
     public void setPersonFilePath(File file) {
