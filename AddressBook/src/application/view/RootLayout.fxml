@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="317.0" prefWidth="1215.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <left>
+    <ToolBar maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" orientation="VERTICAL" prefHeight="287.0" prefWidth="60.0">
+      <items>
+        <Button mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="30.0" prefWidth="50.0" text="Add">
+          <rotationAxis>
+            <Point3D fx:id="x1" />
+          </rotationAxis>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#handleEditPerson" prefHeight="30.0" prefWidth="50.0" text="Edit">
+          <rotationAxis>
+            <Point3D fx:id="x1" />
+          </rotationAxis>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#handleFindPerson" prefHeight="30.0" prefWidth="50.0" text="Find">
+          <rotationAxis>
+            <Point3D fx:id="x1" />
+          </rotationAxis>
+        </Button>
+        <Button id="deleteButton" mnemonicParsing="false" onAction="#handleDeletePerson" prefHeight="30.0" prefWidth="50.0" rotationAxis="$x1" text="Delete" />
+      </items>
+      <rotationAxis>
+        <Point3D fx:id="x1" />
+      </rotationAxis>
+    </ToolBar>
+  </left>
+  <top>
+    <MenuBar maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="30.0" prefWidth="1220.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#handleNewFile" text="New" />
+            <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open..." />
+            <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save..." />
+            <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save As..." />
+            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#handleNewPerson" text="Add" />
+            <MenuItem mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
+            <MenuItem mnemonicParsing="false" onAction="#handleFindPerson" text="Find" />
+            <MenuItem mnemonicParsing="false" onAction="#handleDeletePerson" text="Delete" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>
