@@ -113,7 +113,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personAddDialogController = loader.getController();
-/*
+
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonDeleteDialog.fxml"));
         try {
@@ -122,7 +122,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personDeleteDialogController = loader.getController();
-*/
+
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonFindDialog.fxml"));
         try {
@@ -131,7 +131,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personFindDialogController = loader.getController();
-/*
+
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/DataEnterComponent.fxml"));
         try {
@@ -140,7 +140,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         dataEnterComponentController = loader.getController();
-*/
+
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/DataEnterComponent.fxml"));
         try {
@@ -215,6 +215,26 @@ public class MainApp extends Application{
         dialogStage.showAndWait();
 
         return personFindDialogController.isFindClicked();
+    }
+
+    public void initPersonDeleteDialog(){
+        AnchorPane.setLeftAnchor(dataEnterComponent, 8.0);
+        AnchorPane.setTopAnchor(dataEnterComponent, 5.0);
+        personDeleteDialog.getChildren().add(dataEnterComponent);
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Find Person");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.setResizable(false);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(personDeleteDialog);
+        dialogStage.setScene(scene);
+
+        personDeleteDialogController.setDialogStage(dialogStage);
+        personDeleteDialogController.setDataEnterComponentController(dataEnterComponentController);
+        personDeleteDialogController.setDataBaseController(dataBaseController);
+
+        dialogStage.showAndWait();
     }
 
     public static void main(String[] args) {

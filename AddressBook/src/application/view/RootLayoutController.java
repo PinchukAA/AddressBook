@@ -82,7 +82,7 @@ public class RootLayoutController {
 
     @FXML
     public void handleFindAndDeletePerson() {
-
+        mainApp.initPersonDeleteDialog();
     }
 
     @FXML
@@ -137,6 +137,7 @@ public class RootLayoutController {
             dataSaver.savePersonDataToFile(file);
         }
     }
+
 
     @FXML
     private void handleExit() {
