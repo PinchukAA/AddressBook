@@ -17,7 +17,7 @@ public class DataSetterController {
     private MainApp mainApp;
     private TableOverviewController tableOverviewController;
     private ObservableList<Person> currentData;
-    private ObservableList<Person> selectedData = FXCollections.observableArrayList();;
+    private ObservableList<Person> selectedData = FXCollections.observableArrayList();
     private int selectedDataSize = 0;
     private int startIndex = 0;
     private int endIndex = 0;
@@ -29,7 +29,7 @@ public class DataSetterController {
     public void setCurrentData(ObservableList<Person> currentData){
         this.currentData = currentData;
         if (selectedDataSize > currentData.size()) selectedDataSize = currentData.size();
-        if (endIndex > currentData.size() + 1) endIndex = currentData.size() + 1;                       // ???? +1
+        if (endIndex > currentData.size()) endIndex = currentData.size();
 
         if (selectedDataSize == 0){
             selectedDataSize = currentData.size();
@@ -51,7 +51,9 @@ public class DataSetterController {
     }
 
     private void initTable(){
-        tableOverviewController.removeTableItems();
+        System.out.print(startIndex);
+        System.out.print(endIndex);
+        tableOverviewController.removeAllTableItems();
         tableOverviewController.setTableData(selectedData);
     }
 
@@ -113,7 +115,8 @@ public class DataSetterController {
             alert.showAndWait();
         } else {
             if (selectedDataSize > currentData.size()) selectedDataSize = currentData.size();
-            if (endIndex > currentData.size() + 1) endIndex = currentData.size() + 1;
+            if (selectedDataSize + startIndex + 1 <= currentData.size()) endIndex = startIndex + selectedDataSize;
+            else endIndex = currentData.size();
             selectData();
         }
     }

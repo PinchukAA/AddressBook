@@ -17,6 +17,7 @@ public class RootLayoutController {
     private MainApp mainApp;
     private DataSaver dataSaver;
     private DataBaseController dataBaseController;
+    private TableOverviewController tableOverviewController;
 
 
     public void setMainApp(MainApp mainApp) {
@@ -27,6 +28,9 @@ public class RootLayoutController {
     }
     public void setDataBaseController(DataBaseController dataBaseController){
         this.dataBaseController = dataBaseController;
+    }
+    public void setTableOverviewController(TableOverviewController tableOverviewController){
+        this.tableOverviewController = tableOverviewController;
     }
 
     @FXML
@@ -46,7 +50,17 @@ public class RootLayoutController {
 
     @FXML
     public void handleDeletePerson() {
+        Person delPerson = tableOverviewController.getSelectedPerson();
+        if (delPerson != null) dataBaseController.deletePerson(delPerson);
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
 
+            alert.showAndWait();
+        }
     }
 
     @FXML

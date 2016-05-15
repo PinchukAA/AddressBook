@@ -5,9 +5,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="317.0" prefWidth="1215.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.view.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="1220.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.view.RootLayoutController">
   <left>
-    <ToolBar maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" orientation="VERTICAL" prefHeight="287.0" prefWidth="60.0">
+    <ToolBar maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" orientation="VERTICAL" prefHeight="297.0" prefWidth="60.0">
       <items>
         <Button mnemonicParsing="false" onAction="#handleNewPerson" prefHeight="30.0" prefWidth="50.0" text="Add">
           <rotationAxis>
@@ -24,8 +24,8 @@
             <Point3D fx:id="x1" />
           </rotationAxis>
         </Button>
-        <Button id="deleteButton" mnemonicParsing="false" onAction="#handleDeletePerson" prefHeight="30.0" prefWidth="50.0" rotationAxis="$x1" text="Delete" />
-        <Button id="deleteButton" mnemonicParsing="false" onAction="#handleFindAndDeletePerson" prefHeight="30.0" prefWidth="50.0" text="F&amp;D">
+        <Button id="" mnemonicParsing="false" onAction="#handleDeletePerson" prefHeight="30.0" prefWidth="50.0" rotationAxis="$x1" text="Delete" />
+        <Button id="" mnemonicParsing="false" onAction="#handleFindAndDeletePerson" prefHeight="30.0" prefWidth="50.0" text="F&amp;D">
           <rotationAxis>
             <Point3D fx:id="x1" />
           </rotationAxis>

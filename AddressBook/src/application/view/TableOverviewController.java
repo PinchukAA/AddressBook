@@ -50,7 +50,11 @@ public class TableOverviewController {
        tableView.setItems(tableData);
     }
 
-    public void removeTableItems(){
-        if (tableData != null) tableView.getItems().removeAll(tableData);
+    public Person getSelectedPerson(){
+        return tableView.getSelectionModel().getSelectedItem();
+    }
+
+    public void removeAllTableItems(){
+        if (tableData != null) tableView.getItems().removeAll();
     }
 }

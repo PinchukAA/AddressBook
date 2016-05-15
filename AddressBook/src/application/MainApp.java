@@ -26,11 +26,14 @@ public class MainApp extends Application{
 
     private RootLayoutController rootLayoutController;
     private TableOverviewController tableOverviewController;
+    private TableOverviewController findTableOverviewController;
     private DataSetterController dataSetterController;
+    private DataSetterController findDataSetterController;
     private PersonAddDialogController personAddDIalogController;
     private PersonDeleteDialogController personDeleteDialogController;
     private PersonFindDialogController personFindDialogController;
     private DataEnterComponentController dataEnterComponentController;
+    private DataEnterComponentController findDataEnterComponentController;
 
     private DataBaseController dataBaseController;
 
@@ -66,7 +69,6 @@ public class MainApp extends Application{
         loader.setLocation(MainApp.class.getResource("view/TableOverview.fxml"));
         try {
             tableOverview = (AnchorPane) loader.load();
- //           findTableOverview = (AnchorPane) loader.load();
         } catch (IOException e) {
             System.out.print(1);
             e.printStackTrace();
@@ -74,14 +76,32 @@ public class MainApp extends Application{
         tableOverviewController = loader.getController();
 
         loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/TableOverview.fxml"));
+        try {
+            findTableOverview = (AnchorPane) loader.load();
+        } catch (IOException e) {
+            System.out.print(1);
+            e.printStackTrace();
+        }
+        findTableOverviewController = loader.getController();
+
+        loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/DataSetter.fxml"));
         try {
             dataSetter = (AnchorPane) loader.load();
-   //         findDataSetter = (AnchorPane) loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
         dataSetterController = loader.getController();
+
+        loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/DataSetter.fxml"));
+        try {
+           findDataSetter = (AnchorPane) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        findDataSetterController = loader.getController();
 /*
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonAddDialog.fxml"));
@@ -133,9 +153,10 @@ public class MainApp extends Application{
         rootLayout.setRight(dataSetter);
         rootLayoutController.setMainApp(this);
 
-        dataBaseController = new DataBaseController(dataSetterController);
         dataSetterController.setTableOverviewController(tableOverviewController);
+        dataBaseController = new DataBaseController(dataSetterController);
         rootLayoutController.setDataBaseController(dataBaseController);
+        rootLayoutController.setTableOverviewController(tableOverviewController);
     }
 
     public static void main(String[] args) {
