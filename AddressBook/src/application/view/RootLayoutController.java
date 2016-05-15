@@ -87,6 +87,7 @@ public class RootLayoutController {
 
     @FXML
     private void handleNewFile() {
+        dataBaseController.deletePerson(dataBaseController.getData());
         dataSaver.setPersonFilePath(null);
     }
 

@@ -95,7 +95,10 @@ public class MainApp extends Application{
         dataBaseController = new DataBaseController(dataSetterController);
         rootLayoutController.setDataBaseController(dataBaseController);
         rootLayoutController.setTableOverviewController(tableOverviewController);
+
         dataSaver = new DataSaver();
+        dataSaver.setMainApp(this);
+        dataSaver.setPrimaryStage(primaryStage);
         rootLayoutController.setDataSaver(dataSaver);
 
         Scene scene = new Scene(rootLayout);
