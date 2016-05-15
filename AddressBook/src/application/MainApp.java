@@ -1,5 +1,6 @@
 package application;
 
+import application.model.Person;
 import application.view.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -29,7 +31,7 @@ public class MainApp extends Application{
     private TableOverviewController findTableOverviewController;
     private DataSetterController dataSetterController;
     private DataSetterController findDataSetterController;
-    private PersonAddDialogController personAddDIalogController;
+    private PersonAddDialogController personAddDialogController;
     private PersonDeleteDialogController personDeleteDialogController;
     private PersonFindDialogController personFindDialogController;
     private DataEnterComponentController dataEnterComponentController;
@@ -102,7 +104,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         findDataSetterController = loader.getController();
-/*
+
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonAddDialog.fxml"));
         try {
@@ -111,7 +113,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personAddDialogController = loader.getController();
-
+/*
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonDeleteDialog.fxml"));
         try {
@@ -120,7 +122,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personDeleteDialogController = loader.getController();
-
+*/
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/PersonFindDialog.fxml"));
         try {
@@ -129,20 +131,24 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
         personFindDialogController = loader.getController();
-
+/*
         loader = new FXMLLoader();
         loader.setLocation(MainApp.class.getResource("view/DataEnterComponent.fxml"));
         try {
-            findDataEnterComponent = (AnchorPane) loader.load();
             dataEnterComponent = (AnchorPane) loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        dataEnterComponentController = loader.getController();*/
-    }
-
-    public void initDataEnterComponentController(){
-        dataEnterComponentController = new DataEnterComponentController();
+        dataEnterComponentController = loader.getController();
+*/
+        loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/DataEnterComponent.fxml"));
+        try {
+            findDataEnterComponent = (AnchorPane) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        findDataEnterComponentController = loader.getController();
     }
 
     public void initRootLayout(){
@@ -157,6 +163,58 @@ public class MainApp extends Application{
         dataBaseController = new DataBaseController(dataSetterController);
         rootLayoutController.setDataBaseController(dataBaseController);
         rootLayoutController.setTableOverviewController(tableOverviewController);
+    }
+
+    public boolean initPersonAddDialog(Person person){
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Edit Person");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(personAddDialog);
+        dialogStage.setScene(scene);
+
+        personAddDialogController.setDialogStage(dialogStage);
+        personAddDialogController.setPerson(person);
+
+        dialogStage.showAndWait();
+
+        return personAddDialogController.isOkClicked();
+    }
+
+    public boolean initPersonFindDialog(){
+        AnchorPane.setLeftAnchor(findTableOverview, 0.0);
+        AnchorPane.setTopAnchor(findTableOverview, 0.0);
+        findDataSetter.getChildren().add(findTableOverview);
+
+        AnchorPane.setLeftAnchor(findDataSetter, 8.0);
+        AnchorPane.setTopAnchor(findDataSetter, 0.0);
+
+        AnchorPane.setLeftAnchor(findDataEnterComponent, 8.0);
+        AnchorPane.setBottomAnchor(findDataEnterComponent, 5.0);
+
+        personFindDialog.getChildren().add(findDataSetter);
+        personFindDialog.getChildren().add(findDataEnterComponent);
+
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Find Person");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.setResizable(false);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(personFindDialog);
+        dialogStage.setScene(scene);
+
+        findDataSetterController.setTableOverviewController(findTableOverviewController);
+        findDataSetterController.setCurrentData(dataBaseController.getData());
+
+        personFindDialogController.setDialogStage(dialogStage);
+        personFindDialogController.setDataBaseController(dataBaseController);
+        personFindDialogController.setFindDataSetterController(findDataSetterController);
+        personFindDialogController.setFindDataEnterComponentController(findDataEnterComponentController);
+        personFindDialogController.setFindTableOverviewController(findTableOverviewController);
+
+        dialogStage.showAndWait();
+
+        return personFindDialogController.isFindClicked();
     }
 
     public static void main(String[] args) {

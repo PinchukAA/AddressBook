@@ -35,17 +35,34 @@ public class RootLayoutController {
 
     @FXML
     public void handleNewPerson() {
-
+        Person tempPerson = new Person();
+        boolean okClicked = mainApp.initPersonAddDialog(tempPerson);
+        if (okClicked) {
+            dataBaseController.addPerson(tempPerson);
+        }
     }
 
     @FXML
     public void handleEditPerson() {
+        Person selectedPerson = new Person();
+        selectedPerson = tableOverviewController.getSelectedPerson();
+        if (selectedPerson != null) {
+            boolean okClicked = mainApp.initPersonAddDialog(selectedPerson);
 
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(mainApp.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
     }
 
     @FXML
     public void handleFindPerson(){
-
+        boolean okClicked = mainApp.initPersonFindDialog();
     }
 
     @FXML

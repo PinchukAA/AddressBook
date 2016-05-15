@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="personTable" fx:id="flatNumberCheckBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="710.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.view.DataEnterComponentController">
+<AnchorPane id="personTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="710.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.view.DataEnterComponentController">
   <children>
     <GridPane layoutX="6.0" layoutY="0.0" prefHeight="150.0" prefWidth="710.0">
       <children>
@@ -41,7 +41,7 @@
         <CheckBox id="streetCheck" fx:id="streetCheckBox" mnemonicParsing="false" text="" GridPane.columnIndex="5" GridPane.margin="$x1" GridPane.rowIndex="1" />
         <CheckBox id="houseNumberCheck" fx:id="houseNumberCheckBox" mnemonicParsing="false" text="" GridPane.columnIndex="5" GridPane.margin="$x1" GridPane.rowIndex="2" />
         <CheckBox id="pavilionNumberCheck" fx:id="pavilionNumberCheckBox" mnemonicParsing="false" text="" GridPane.columnIndex="5" GridPane.margin="$x1" GridPane.rowIndex="3" />
-        <CheckBox fx:id="flatNumberCheck" mnemonicParsing="false" text="" GridPane.columnIndex="5" GridPane.margin="$x1" GridPane.rowIndex="4" />
+        <CheckBox id="flatNumberCheck" fx:id="flatNumberCheckBox" mnemonicParsing="false" text="" GridPane.columnIndex="5" GridPane.margin="$x1" GridPane.rowIndex="4" />
         <Label prefWidth="61.000091552734375" text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
       </children>
       <columnConstraints>
