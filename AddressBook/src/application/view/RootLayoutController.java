@@ -36,7 +36,7 @@ public class RootLayoutController {
     @FXML
     public void handleNewPerson() {
         Person tempPerson = new Person();
-        boolean okClicked = mainApp.initPersonAddDialog(tempPerson);
+        boolean okClicked = mainApp.showPersonAddDialog(tempPerson);
         if (okClicked) {
             dataBaseController.addPerson(tempPerson);
         }
@@ -47,7 +47,7 @@ public class RootLayoutController {
         Person selectedPerson = new Person();
         selectedPerson = tableOverviewController.getSelectedPerson();
         if (selectedPerson != null) {
-            boolean okClicked = mainApp.initPersonAddDialog(selectedPerson);
+            boolean okClicked = mainApp.showPersonAddDialog(selectedPerson);
 
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -62,7 +62,7 @@ public class RootLayoutController {
 
     @FXML
     public void handleFindPerson(){
-        boolean okClicked = mainApp.initPersonFindDialog();
+        boolean okClicked = mainApp.showPersonFindDialog();
     }
 
     @FXML
@@ -82,8 +82,8 @@ public class RootLayoutController {
 
     @FXML
     public void handleFindAndDeletePerson() {
-        mainApp.initPersonDeleteDialog();
-    }
+        mainApp.showPersonDeleteDialog();
+}
 
     @FXML
     private void handleNewFile() {
@@ -103,7 +103,7 @@ public class RootLayoutController {
             dataSaver.loadPersonDataFromFile(file);
         }
         dataBaseController.setData(dataSaver.getData());
-        for (Iterator<Person> iteratorPerson = dataSaver.getData().iterator(); iteratorPerson.hasNext();){
+        for (Iterator<Person> iteratorPerson = dataBaseController.getData().iterator(); iteratorPerson.hasNext();){
             iteratorPerson.next().setFIO();
         }
     }
@@ -121,7 +121,7 @@ public class RootLayoutController {
     }
 
     @FXML
-    private void handleSaveAs() {
+    private void handleSaveAs(){
         dataSaver.setData(dataBaseController.getData());
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
