@@ -1,7 +1,8 @@
 package application;
 
+import application.controller.*;
+import application.model.DataBaseController;
 import application.model.Person;
-import application.view.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -196,6 +197,7 @@ public class MainApp extends Application{
 
         findDataSetterController.setTableOverviewController(findTableOverviewController);
 
+        findDataSetterController.setDialogStage(dialogStage);
         personFindDialogController.setDialogStage(dialogStage);
         personFindDialogController.setDataBaseController(dataBaseController);
         personFindDialogController.setFindDataSetterController(findDataSetterController);
