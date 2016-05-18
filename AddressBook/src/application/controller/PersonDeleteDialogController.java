@@ -47,25 +47,25 @@ public class PersonDeleteDialogController {
                 if ((tempPerson.getSurName()).equals(dataEnterComponentController.getSurNameText())) a = true;
                 else b = false;
             if(dataEnterComponentController.getCountryCheck())
-                if ((tempPerson.getCountry()).equals(dataEnterComponentController.getCountryText())) a = true;
+                if ((tempPerson.getAddress().getCountry()).equals(dataEnterComponentController.getCountryText())) a = true;
                 else b = false;
             if(dataEnterComponentController.getRegionCheck())
-                if ((tempPerson.getRegion()).equals(dataEnterComponentController.getRegionText())) a = true;
+                if ((tempPerson.getAddress().getRegion()).equals(dataEnterComponentController.getRegionText())) a = true;
                 else b = false;
             if(dataEnterComponentController.getCityCheck())
-                if ((tempPerson.getCity()).equals(dataEnterComponentController.getCityText())) a = true;
+                if ((tempPerson.getAddress().getCity()).equals(dataEnterComponentController.getCityText())) a = true;
                 else b = false;
             if(dataEnterComponentController.getStreetCheck())
-                if ((tempPerson.getStreet()).equals(dataEnterComponentController.getStreetText())) a = true;
+                if ((tempPerson.getAddress().getStreet()).equals(dataEnterComponentController.getStreetText())) a = true;
                 else b = false;
             if(dataEnterComponentController.getHouseNumberCheck())
-                if ((tempPerson.getHouseNumber()) == dataEnterComponentController.getHouseNumberText()) a = true;
+                if ((tempPerson.getAddress().getHouseNumber()) == dataEnterComponentController.getHouseNumberText()) a = true;
                 else b = false;
             if(dataEnterComponentController.getPavilionNumberCheck())
-                if ((tempPerson.getPavilionNumber()) == dataEnterComponentController.getPavilionNumberText()) a = true;
+                if ((tempPerson.getAddress().getPavilionNumber()) == dataEnterComponentController.getPavilionNumberText()) a = true;
                 else b = false;
             if(dataEnterComponentController.getFlatNumberCheck())
-                if ((tempPerson.getFlatNumber()) == dataEnterComponentController.getFlatNumberText()) a = true;
+                if ((tempPerson.getAddress().getFlatNumber()) == dataEnterComponentController.getFlatNumberText()) a = true;
                 else b = false;
             if (a && b) findData.add(tempPerson);
         }

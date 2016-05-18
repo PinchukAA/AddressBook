@@ -12,24 +12,24 @@ public class DataBaseController {
     public DataBaseController(DataSetterController dataSetterController){
         data = FXCollections.observableArrayList();
 
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 0, 0, 0));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 1, 1, 1));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 2, 2, 2));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 3, 3, 3));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 4, 4, 4));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 5, 5, 5));
-        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", "Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 6, 6, 6));
-        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", "Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 7, 7, 7));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 8, 8, 8));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 9, 9, 9));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 10, 10, 10));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 11, 11, 11));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 12, 12, 12));
-        data.add(new Person("Vlad", "Vladimirovich", "Oganov", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 13, 13, 13));
-        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", "Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 14, 14, 14));
-        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", "Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 15, 15, 15));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 16, 16, 16));
-        data.add(new Person("Maks", "Andreevich", "Nikiforovec", "Belarus", "MinskRegion", "Minsk", "Gde-to tam", 17, 17, 17));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 0, 0, 0)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 1, 1, 1)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 2, 2, 2)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 3, 3, 3)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 4, 4, 4)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 5, 5, 5)));
+        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", new PersonAddress("Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 6, 6, 6)));
+        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", new PersonAddress("Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 7, 7, 7)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 8, 8, 8)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 9, 9, 9)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 10, 10, 10)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 11, 11, 11)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 12, 12, 12)));
+        data.add(new Person("Vlad", "Vladimirovich", "Oganov", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 13, 13, 13)));
+        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", new PersonAddress("Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 14, 14, 14)));
+        data.add(new Person("Nastya", "Aleksandrovna", "Hilko", new PersonAddress("Belarus", "MinskRegion", "Baranovichi", "Gde-to tam", 15, 15, 15)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 16, 16, 16)));
+        data.add(new Person("Maks", "Andreevich", "Nikiforovec", new PersonAddress("Belarus", "MinskRegion", "Minsk", "Gde-to tam", 17, 17, 17)));
 
         this.dataSetterController = dataSetterController;
         changeDataSet();

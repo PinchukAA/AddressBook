@@ -52,8 +52,8 @@ public class DataSetterController {
     }
 
     private void initTable(){
-        System.out.print(startIndex);
-        System.out.print(endIndex + " ");
+    //    System.out.print(startIndex);
+    //    System.out.print(endIndex + " ");
         tableOverviewController.removeAllTableItems();
         tableOverviewController.setTableData(selectedData);
     }

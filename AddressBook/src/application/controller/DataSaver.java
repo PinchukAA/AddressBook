@@ -56,14 +56,16 @@ public class DataSaver {
     }
 
     public void loadPersonDataFromFile(File file) {
-        try {
+        try {/*
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             PersonListWrapper wrapper = (PersonListWrapper) unmarshaller.unmarshal(file);
 
             data.clear();
-            data.addAll(wrapper.getPersons());
+            data.addAll(wrapper.getPersons());*/
+            DataParser dataParser = new DataParser();
+            dataParser.loadAddressBook(file);
             setPersonFilePath(file);
 
         } catch (Exception e) {
@@ -77,7 +79,7 @@ public class DataSaver {
     }
 
     public void savePersonDataToFile(File file) {
-        try {
+        try {/*
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
 
             Marshaller marshaller = context.createMarshaller();
@@ -86,7 +88,10 @@ public class DataSaver {
             PersonListWrapper wrapper = new PersonListWrapper();
             wrapper.setPersons(data);
 
-            marshaller.marshal(wrapper, file);
+            marshaller.marshal(wrapper, file);*/
+
+            DataParser dataParser = new DataParser();
+            dataParser.save(file, data);
             setPersonFilePath(file);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

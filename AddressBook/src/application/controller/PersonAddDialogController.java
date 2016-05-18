@@ -49,13 +49,13 @@ public class PersonAddDialogController {
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         surNameField.setText(person.getSurName());
-        countryField.setText(person.getCountry());
-        regionField.setText(person.getRegion());
-        cityField.setText(person.getCity());
-        streetField.setText(person.getStreet());
-        houseNumberField.setText(Integer.toString(person.getHouseNumber()));
-        pavilionNumberField.setText(Integer.toString(person.getPavilionNumber()));
-        flatNumberField.setText(Integer.toString(person.getFlatNumber()));
+        countryField.setText(person.getAddress().getCountry());
+        regionField.setText(person.getAddress().getRegion());
+        cityField.setText(person.getAddress().getCity());
+        streetField.setText(person.getAddress().getStreet());
+        houseNumberField.setText(Integer.toString(person.getAddress().getHouseNumber()));
+        pavilionNumberField.setText(Integer.toString(person.getAddress().getPavilionNumber()));
+        flatNumberField.setText(Integer.toString(person.getAddress().getFlatNumber()));
     }
 
     public boolean isOkClicked() {
@@ -69,13 +69,13 @@ public class PersonAddDialogController {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
             person.setSurName(surNameField.getText());
-            person.setCountry(countryField.getText());
-            person.setRegion(regionField.getText());
-            person.setCity(cityField.getText());
-            person.setStreet(streetField.getText());
-            person.setHouseNumber(Integer.parseInt(houseNumberField.getText()));
-            person.setPavilionNumber(Integer.parseInt(pavilionNumberField.getText()));
-            person.setFlatNumber(Integer.parseInt(flatNumberField.getText()));
+            person.getAddress().setCountry(countryField.getText());
+            person.getAddress().setRegion(regionField.getText());
+            person.getAddress().setCity(cityField.getText());
+            person.getAddress().setStreet(streetField.getText());
+            person.getAddress().setHouseNumber(Integer.parseInt(houseNumberField.getText()));
+            person.getAddress().setPavilionNumber(Integer.parseInt(pavilionNumberField.getText()));
+            person.getAddress().setFlatNumber(Integer.parseInt(flatNumberField.getText()));
             person.setFIO(lastNameField.getText(), firstNameField.getText(), surNameField.getText());
 
             okClicked = true;

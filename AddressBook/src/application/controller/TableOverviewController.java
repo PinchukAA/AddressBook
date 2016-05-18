@@ -32,13 +32,13 @@ public class TableOverviewController {
     @FXML
     private void initialize() {
         FIOColumn.setCellValueFactory(cellData -> cellData.getValue().FIOProperty());
-        countryColumn.setCellValueFactory(cellData -> cellData.getValue().countryProperty());
-        regionColumn.setCellValueFactory(cellData -> cellData.getValue().regionProperty());
-        cityColumn.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
-        streetColumn.setCellValueFactory(cellData -> cellData.getValue().streetProperty());
-        houseNumberColumn.setCellValueFactory(cellData -> cellData.getValue().houseNumberProperty().asObject());
-        pavilionNumberColumn.setCellValueFactory(cellData -> cellData.getValue().pavilionNumberProperty().asObject());
-        flatNumberColumn.setCellValueFactory(cellData -> cellData.getValue().flatNumberProperty().asObject());
+        countryColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().countryProperty());
+        regionColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().regionProperty());
+        cityColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().cityProperty());
+        streetColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().streetProperty());
+        houseNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().houseNumberProperty().asObject());
+        pavilionNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().pavilionNumberProperty().asObject());
+        flatNumberColumn.setCellValueFactory(cellData -> cellData.getValue().getAddress().flatNumberProperty().asObject());
     }
 
     public void setTableData(ObservableList<Person> tableData){
