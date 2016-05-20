@@ -100,6 +100,7 @@ public class MainApp extends Application{
         dataSaver = new DataSaver();
         dataSaver.setMainApp(this);
         dataSaver.setPrimaryStage(primaryStage);
+        dataSaver.setDataBaseController(dataBaseController);
         rootLayoutController.setDataSaver(dataSaver);
 
         Scene scene = new Scene(rootLayout);

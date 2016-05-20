@@ -19,10 +19,11 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.ws.soap.Addressing;
 
 import application.model.Person;
 import application.model.PersonAddress;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.Attributes;
@@ -87,7 +88,7 @@ public class DataParser{
         transformer.transform(new DOMSource(document), new StreamResult(file));
     }
 
-    public static List<Person> loadAddressBook(File fileName) {
+    public static ObservableList<Person> loadAddressBook(File fileName) {
         InputStream in = null;
         try {
             in = new FileInputStream(fileName);
@@ -100,7 +101,8 @@ public class DataParser{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<Person> loadAddressBook = loader.getPersons();
+        ObservableList<Person> loadAddressBook;
+        loadAddressBook = loader.getPersons();
 
         return loadAddressBook;
     }
@@ -110,10 +112,9 @@ public class DataParser{
         private SAXParser parser;
         private DefaultHandler documentHandler;
 
-        private List<Person> personsList;
+        private ObservableList<Person>  personsList = FXCollections.observableArrayList();
 
         public XMLGraphLoader(InputStream stream) {
-            personsList = new LinkedList<>();
             try {
                 Reader reader = new InputStreamReader(stream);
                 source = new InputSource(reader);
@@ -128,81 +129,44 @@ public class DataParser{
             parser.parse(source, documentHandler);
         }
 
-        public List<Person> getPersons() {
+        public ObservableList<Person> getPersons() {
             return personsList;
         }
 
         class XMLParser extends DefaultHandler {
+
+            PersonAddress tempPersonAddress = null;
+            Person tempPerson = null;
+
+            String firstName = null;
+            String secondName = null;
+            String surName = null;
+
             public void startElement(String uri, String localName, String qName, Attributes attr) {
-                PersonAddress tempPersonAddress;
-                Person tempPerson;
-
-                String firstName = null;
-                String secondName = null;
-                String surName = null;
-
-                List<PersonAddress> personAddressList = new ArrayList<>();
-                List<List> personFieldList = new ArrayList<>();
-                List<String> fieldList = new ArrayList<>();
 
                 switch (qName){
-                    case ("personAddress"):
-                        personAddressList.add(parsePersonAddress(attr));
-                        break;
                     case ("person"):
-                        fieldList = parsePerson(attr);
-                        personFieldList.add(fieldList);
+                        parsePerson(attr);
+                        break;
+                    case ("personAddress"):
+                        parsePersonAddress(attr);
                         break;
                     }
-                Iterator<PersonAddress> iteratorP = personAddressList.iterator();
-                for (Iterator<List> iteratorL = personFieldList.iterator(); iteratorL.hasNext();){
-                    iteratorP.hasNext();
-                    tempPersonAddress = iteratorP.next();
-                    fieldList = iteratorL.next();
-                    for (Iterator<String> iteratorS = fieldList.iterator(); iteratorS.hasNext();){
-                        firstName = iteratorS.next();
-                        System.out.print(firstName);
-                        secondName = iteratorS.next();
-                        System.out.print(secondName);
-                        surName = iteratorS.next();
-                        System.out.print(surName);
-                    }
+
+                if(firstName != null && tempPersonAddress != null){
 
                     tempPerson = new Person(firstName, secondName, surName, tempPersonAddress);
                     personsList.add(tempPerson);
+
+                    firstName = null;
+                    secondName = null;
+                    surName = null;
+                    tempPersonAddress = null;
                 }
-
-
             }
 
-
-
-
-
-                /*
-                if(qName.equals("person")){
-                        List<String> list = parsePerson(attr);
-                        for (Iterator<String> iteratorS = list.iterator(); iteratorS.hasNext();){
-                            firstName = iteratorS.next();
-                            System.out.print(firstName);
-                            secondName = iteratorS.next();
-                            System.out.print(secondName);
-                            surName = iteratorS.next();
-                            System.out.print(surName);
-                        }
-                        list.removeAll(list);
-
-                        if(qName.equals("personAddress"))
-                            tempAddress = parsePersonAddress(attr);
-
-                        Person tempPerson = new Person(firstName, secondName, surName, tempAddress);
-                        personsList.add(tempPerson);
-                    }
-                }*/
-
-            private PersonAddress parsePersonAddress(Attributes attr){
-                System.out.print(attr.getValue("houseNumber"));
-                PersonAddress tempAddress = new PersonAddress(
+            private void parsePersonAddress(Attributes attr){
+                tempPersonAddress = new PersonAddress(
                         attr.getValue("country"),
                         attr.getValue("region"),
                         attr.getValue("city"),
@@ -211,15 +175,12 @@ public class DataParser{
                         Integer.parseInt(attr.getValue("pavilionNumber")),
                         Integer.parseInt(attr.getValue("flatNumber"))
                 );
-                return tempAddress;
             }
 
-            private List<String> parsePerson(Attributes attr) {
-                List<String> list = new ArrayList<>();
-                list.add(attr.getValue("firstName"));
-                list.add(attr.getValue("lastName"));
-                list.add(attr.getValue("surName"));
-                return list;
+            private void parsePerson(Attributes attr) {
+                firstName = attr.getValue("firstName");
+                secondName = attr.getValue("lastName");
+                surName = attr.getValue("surName");
             }
         }
     }

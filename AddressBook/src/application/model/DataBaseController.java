@@ -5,6 +5,8 @@ import application.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.Iterator;
+
 public class DataBaseController {
     private ObservableList<Person> data;
     private DataSetterController dataSetterController;

@@ -100,7 +100,6 @@ public class RootLayoutController {
         if (file != null) {
             dataSaver.loadPersonDataFromFile(file);
         }
-        dataBaseController.setData(dataSaver.getData());
         for (Iterator<Person> iteratorPerson = dataBaseController.getData().iterator(); iteratorPerson.hasNext();){
             iteratorPerson.next().setFIO();
         }
@@ -109,7 +108,6 @@ public class RootLayoutController {
 
     @FXML
     private void handleSave() {
-        dataSaver.setData(dataBaseController.getData());
         File personFile = dataSaver.getPersonFilePath();
         if (personFile != null) {
             dataSaver.savePersonDataToFile(personFile);
@@ -120,7 +118,6 @@ public class RootLayoutController {
 
     @FXML
     private void handleSaveAs(){
-        dataSaver.setData(dataBaseController.getData());
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "XML files (*.xml)", "*.xml");

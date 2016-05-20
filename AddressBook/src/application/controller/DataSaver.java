@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.MainApp;
+import application.model.DataBaseController;
 import application.model.Person;
 import application.model.PersonListWrapper;
 import javafx.collections.FXCollections;
@@ -15,12 +16,18 @@ import java.io.File;
 
 public class DataSaver {
     private MainApp mainApp;
+    private DataBaseController dataBaseController;
+
     private Stage primaryStage;
     private ObservableList<Person> data = FXCollections.observableArrayList();
     private String filePath;
 
     public void setMainApp(MainApp mainApp){
         this.mainApp = mainApp;
+    }
+
+    public void setDataBaseController(DataBaseController dataBaseController){
+        this.dataBaseController = dataBaseController;
     }
 
     public void setPrimaryStage(Stage primaryStage){
@@ -64,8 +71,10 @@ public class DataSaver {
 
             data.clear();
             data.addAll(wrapper.getPersons());*/
+
             DataParser dataParser = new DataParser();
-            dataParser.loadAddressBook(file);
+            dataBaseController.setData(dataParser.loadAddressBook(file));
+
             setPersonFilePath(file);
 
         } catch (Exception e) {
@@ -91,7 +100,7 @@ public class DataSaver {
             marshaller.marshal(wrapper, file);*/
 
             DataParser dataParser = new DataParser();
-            dataParser.save(file, data);
+            dataParser.save(file, dataBaseController.getData());
             setPersonFilePath(file);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
